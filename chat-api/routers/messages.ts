@@ -20,11 +20,15 @@ messagesRouter.post('/', async (req, res) => {
     if (!req.body.author || !req.body.message) {
         return res.status(400).send({error: 'Enter correct data!'});
     }
-
+    let queryDate = req.query.datetime as string;
+    const date = new Date(queryDate);
+    if (isNaN(date.getDate())){
+        queryDate = new Date().toISOString();
+    }
     const messagesData: MessageWithoutId = {
         author: req.body.author,
         message: req.body.message,
-        datetime: (new Date()).toISOString(),
+        datetime: queryDate ,
     };
     const message = await fileDb.addMessage(messagesData);
     return res.send(message);

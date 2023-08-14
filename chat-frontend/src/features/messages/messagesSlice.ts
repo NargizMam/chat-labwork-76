@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 import {RootState} from "../../app/store";
-import {fetchAllMessages} from "./messagesThunk";
+import {createMessages, fetchAllMessages} from "./messagesThunk";
+import {Message} from "../../types";
 
 interface MessageState {
     messages: Message[],
@@ -10,7 +11,7 @@ interface MessageState {
 }
 
 const initialState: MessageState = {
-    posts: [],
+    messages: [],
     fetchLoading: false,
     createLoading: false
 }
@@ -25,7 +26,7 @@ export const messagesSlice = createSlice({
         });
         builder.addCase(fetchAllMessages.fulfilled, (state, {payload: posts}) => {
             state.fetchLoading = false;
-            state.posts.push(...posts);
+            state.messages.push(...posts);
         });
         builder.addCase(fetchAllMessages.rejected, (state) => {
             state.fetchLoading = false;

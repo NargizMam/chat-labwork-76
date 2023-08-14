@@ -6,6 +6,8 @@ import MessagesForm from "./components/MessagesForm";
 import OneMessage from "./components/OneMessage";
 import {selectFetching, selectMessages} from "./messagesSlice";
 import Spinner from '../../components/UI/Spinner/Spinner';
+import dayjs from "dayjs";
+import {fetchAllMessages} from "./messagesThunk";
 
 
 const Messages = () => {
@@ -14,6 +16,7 @@ const Messages = () => {
     const loading = useAppSelector(selectFetching);
 
     const fetchMessages = useCallback(async () => {
+       await dispatch(fetchAllMessages());
     }, [dispatch]);
 
 
@@ -23,9 +26,11 @@ const Messages = () => {
     }, [fetchMessages]);
 
     const oneMessage = messages.map(message => (
-        <OneMessage message={message.message}
-                 author={message.author}
-                 key={message.id}
+        <OneMessage
+            key={message.id}
+            message={message.message}
+            author={message.author}
+            datetime={(dayjs(message.datetime)).toString()}
         />
     ));
     return (

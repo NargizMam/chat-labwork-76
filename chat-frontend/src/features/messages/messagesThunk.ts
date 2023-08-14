@@ -10,7 +10,7 @@ export const fetchAllMessages = createAsyncThunk<Message[], undefined, {state: R
         const apiMessages = thunkAPI.getState().messages.messages;
         const lastMessage = apiMessages[apiMessages.length - 1];
         if(lastMessage) {
-            url += `?datetime=${lastMessage.dateTime}`;
+            url += `?datetime=${lastMessage.datetime}`;
         }
         const postsResponse = await axiosApi.get<Message[]>(url);
         return postsResponse.data;

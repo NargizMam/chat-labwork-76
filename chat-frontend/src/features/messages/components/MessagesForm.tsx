@@ -42,6 +42,7 @@ const MessagesForm = () => {
                         label="Messages author"
                         value={postState.author}
                         onChange={inputChangeHandler}
+                        required
 
                     />
                     <TextareaAutosize
@@ -51,6 +52,7 @@ const MessagesForm = () => {
                         minRows={8}
                         value={postState.message}
                         onChange={inputChangeHandler}
+                        required
                     />
                 </Grid>
                 <LoadingButton

@@ -3,10 +3,11 @@ import {Grid, Typography} from "@mui/material";
 
 interface Props {
     message: string,
-    author: string
+    author: string,
+    datetime: string
 }
 
-const OneMessage: React.FC<Props> = ({message, author}) => {
+const OneMessage: React.FC<Props> = ({message, author, datetime}) => {
     return (
         <>
             <Grid container>
@@ -16,6 +17,9 @@ const OneMessage: React.FC<Props> = ({message, author}) => {
                     </Typography>
                     <Typography>
                         Author: <strong>{author}</strong>
+                    </Typography>
+                    <Typography variant="body1">
+                        {datetime}
                     </Typography>
                 </Grid>
             </Grid>

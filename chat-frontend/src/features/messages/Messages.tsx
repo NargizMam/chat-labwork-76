@@ -2,6 +2,7 @@ import React, {useCallback, useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {Container, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import MessagesForm from "./components/MessagesForm";
 
 
 const Messages = () => {
@@ -15,12 +16,19 @@ const Messages = () => {
         void fetchPosts();
         setInterval(fetchPosts,5000);
     }, [fetchPosts]);
+    useEffect(() => {
+        void fetchPosts();
+        setInterval(fetchPosts,5000);
+    }, [fetchPosts]);
 
 
     return (
         <Container>
             <Grid container
                   spacing={5}>
+                <Grid item xs={4}>
+                    <MessagesForm/>
+                </Grid>
                 <Grid item xs={8} textAlign={'center'}>
                     <Typography>
                         All posts

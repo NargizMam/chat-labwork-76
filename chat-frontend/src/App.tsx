@@ -1,5 +1,6 @@
 import React from 'react';
 import AppToolbar from "./components/UI/AppToolbar/AppToolbar";
+import Messages from "./features/messages/Messages";
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
             <AppToolbar/>
         </header>
         <main>
-
+            <Messages/>
         </main>
     </>
   );
